@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wasteaider/user/findBinPage.dart';
+import 'package:wasteaider/choose.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _WelcomePageState extends State<WelcomePage> {
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => FindBinPage()),
+        MaterialPageRoute(builder: (context) => ChooseUserAdmin()),
       );
     });
   }

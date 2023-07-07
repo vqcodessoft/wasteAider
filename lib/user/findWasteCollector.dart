@@ -1,20 +1,21 @@
+import 'package:flutter/material.dart';
 import 'dart:ffi';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class FindBinPage extends StatefulWidget {
-  const FindBinPage({super.key});
+class FindWasteCollector extends StatefulWidget {
+  const FindWasteCollector({super.key});
 
   @override
-  State<FindBinPage> createState() => _FindBinPageState();
+  State<FindWasteCollector> createState() => _FindBinPageState();
 }
 
-class _FindBinPageState extends State<FindBinPage> {
+class _FindBinPageState extends State<FindWasteCollector> {
   Uint8? markerImage;
   Future<Uint8List> getbytesfromasset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
@@ -80,7 +81,7 @@ class _FindBinPageState extends State<FindBinPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Find Bin'),
+        title: Text('Find Waste Collector'),
         centerTitle: true,
         actions: [
           // IconButton(
@@ -153,7 +154,7 @@ class _FindBinPageState extends State<FindBinPage> {
               );
           setState(() {});
         },
-        label: Text('Find bin'),
+        label: Text('Find waste collector'),
       ),
     );
   }

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1050847032220",
+    "project_id": "wastaider-4f3bc",
+    "storage_bucket": "wastaider-4f3bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050847032220:android:1892bf718b1d736b328e59",
+        "android_client_info": {
+          "package_name": "com.mycompany.wasteaider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050847032220-qhk2idc3qcqr3qgfmn81luurtaahal4s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.wasteaider",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "1050847032220-ol05v27bbtaulvqd7khvihmd6s7ubokb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWQ3Gb7Gw_MPhvLOWrI6Q5zXM7Otnmrm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050847032220-ol05v27bbtaulvqd7khvihmd6s7ubokb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1050847032220-5fkm5dddtnf3di9kbqiitj4b9c4gafjs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.wasteaider"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
