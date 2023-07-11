@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wasteaider/user/findBinPage.dart';
-import 'package:wasteaider/user/findWasteCollector.dart';
-import 'package:wasteaider/user/learn.dart';
+import 'package:wasteaider/screens/user/findBinPage.dart';
+import 'package:wasteaider/screens/user/findWasteCollector.dart';
+import 'package:wasteaider/screens/user/learn.dart';
+import 'package:wasteaider/screens/user/learnInformationList.dart';
 
 class UserChoose extends StatefulWidget {
   const UserChoose({super.key});
@@ -35,7 +36,7 @@ class _UserChooseState extends State<UserChoose> {
                   );
                 },
                 child: Text(
-                  'Find Bin Page',
+                  'Find Bin',
                   style: TextStyle(fontSize: 30),
                 )),
             Padding(padding: EdgeInsets.only(top: 30)),
@@ -54,7 +55,8 @@ class _UserChooseState extends State<UserChoose> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Learn()),
+                    MaterialPageRoute(
+                        builder: (context) => UserLearnInformation()),
                   );
                 },
                 child: Text('Learn', style: TextStyle(fontSize: 30)))

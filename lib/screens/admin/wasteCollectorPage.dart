@@ -68,21 +68,26 @@ class _WasteCollectorPageState extends State<WasteCollectorPage> {
   submit() async {
     Position position = await _determinePosition();
     try {
-      CollectionReference collref =
+      CollectionReference collRef =
           FirebaseFirestore.instance.collection('wasteCollector');
-      collref.add({
-        'location': location.text,
-        'latitude': position.latitude,
-        'longitude': position.longitude
-      });
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('Location Sent Successfully!'),
-      ));
+
+      if (location.text.isNotEmpty) {
+        await collRef.add({
+          'location': location.text,
+          'latitude': position.latitude,
+          'longitude': position.longitude
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Location Sent Successfully!')));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Please add the location!')));
+      }
     } catch (e) {
       print(e.toString());
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('There is an error sending Location!'),
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('There was an error sending the location!')));
     }
     setState(() {
       location.clear();

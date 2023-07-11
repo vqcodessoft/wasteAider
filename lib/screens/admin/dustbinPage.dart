@@ -68,27 +68,27 @@ class _DustbinPageState extends State<DustbinPage> {
   submit() async {
     Position position = await _determinePosition();
     try {
-      CollectionReference collref =
-          FirebaseFirestore.instance.collection('wasteCollector');
-      collref.add({
-        'location': location.text,
-        'latitude': position.latitude,
-        'longitude': position.longitude
-      });
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('Location Sent Successfully!'),
-      ));
+      CollectionReference collRef =
+          FirebaseFirestore.instance.collection('dustbin');
+
+      if (location.text.isNotEmpty) {
+        await collRef.add({
+          'location': location.text,
+          'latitude': position.latitude,
+          'longitude': position.longitude
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Location Sent Successfully!')));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Please add the location!')));
+      }
     } catch (e) {
       print(e.toString());
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('There is an error sending Location!'),
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('There was an error sending the location!')));
     }
-    setState(() {
-      location.clear();
-      long.clear();
-      lat.clear();
-    });
   }
 
   @override

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wasteaider/admin/dustbinPage.dart';
-import 'package:wasteaider/admin/learnInformation.dart';
-import 'package:wasteaider/admin/wasteCollectorPage.dart';
+import 'package:wasteaider/screens/admin/dustbinLocationList.dart';
+import 'package:wasteaider/screens/admin/learnInformation.dart';
+import 'package:wasteaider/screens/admin/learnInformationList.dart';
+import 'package:wasteaider/screens/admin/wasteCollectorLocationList.dart';
 
 class ChooseDustbinWasteCollector extends StatefulWidget {
   const ChooseDustbinWasteCollector({super.key});
@@ -33,7 +34,8 @@ class _ChooseDustbinWasteCollectorState
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DustbinPage()),
+                    MaterialPageRoute(
+                        builder: (context) => DustbinLocationList()),
                   );
                 },
                 child: Text(
@@ -46,7 +48,7 @@ class _ChooseDustbinWasteCollectorState
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => WasteCollectorPage()),
+                        builder: (context) => wasteCollectorLocationList()),
                   );
                 },
                 child: Text('Add Waste Collector',
@@ -56,7 +58,8 @@ class _ChooseDustbinWasteCollectorState
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LearnInformation()),
+                    MaterialPageRoute(
+                        builder: (context) => ListLearnInformation()),
                   );
                 },
                 child: Text('Add Learn Information',

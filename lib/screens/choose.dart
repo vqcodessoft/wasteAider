@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wasteaider/admin/adminchooseDustbinWastecollector.dart';
+import 'package:wasteaider/screens/admin/adminchoose.dart';
 
-import 'package:wasteaider/user/userChoose.dart';
+import 'package:wasteaider/screens/user/userChoose.dart';
 
 class ChooseUserAdmin extends StatefulWidget {
   const ChooseUserAdmin({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wasteaider/choose.dart';
+import 'package:wasteaider/screens/choose.dart';
 
 class WelcomePage extends StatefulWidget {
   @override

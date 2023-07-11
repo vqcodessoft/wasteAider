@@ -30,10 +30,10 @@ class _FindBinPageState extends State<FindBinPage> {
   BitmapDescriptor? customIcon;
   @override
   void initState() {
+    binLocation();
     getBytesFromAsset('assets/images/person.png', 100).then((onValue) {
       customIcon = BitmapDescriptor.fromBytes(onValue);
     });
-
     super.initState();
   }
 
@@ -75,6 +75,58 @@ class _FindBinPageState extends State<FindBinPage> {
   //     });
   //   });
   // }
+  binLocation() async {
+    Position position = await _determinedPosition();
+    // BitmapDescriptor markerbitmap =
+    //     await BitmapDescriptor.fromAssetImage(
+    //   ImageConfiguration(),
+    //   "assets/images/person.png",
+    // );
+    print('latitude=====>${position.latitude}');
+    print('position=====>${position}');
+
+    List<Marker> list = await [
+      Marker(
+          draggable: true,
+          onDragEnd: (value) {},
+          markerId: MarkerId('1'),
+          position: LatLng(position.latitude, position.longitude),
+          infoWindow: InfoWindow(title: 'My Position'),
+          icon: customIcon!
+
+          // icon: BitmapDescriptor.fromBytes(Uint8List.view(
+          //     'assets/images/person.png'))
+          ),
+      Marker(
+          markerId: MarkerId('2'),
+          position: LatLng(37.42796133580614, -122.085749655962),
+          infoWindow: InfoWindow(title: 'Bin')),
+      Marker(
+          markerId: MarkerId('3'),
+          position: LatLng(37.4143, -122.0774),
+          infoWindow: InfoWindow(title: 'Bin')),
+      Marker(
+          markerId: MarkerId('4'),
+          position: LatLng(37.4268, -122.0807),
+          infoWindow: InfoWindow(title: 'Bin')),
+      Marker(
+          markerId: MarkerId('5'),
+          position: LatLng(37.4227, -122.0664),
+          infoWindow: InfoWindow(title: 'Bin'))
+    ];
+    googlemapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+            target: LatLng(position.latitude, position.longitude), zoom: 14)));
+    // markers.clear();
+    marker.clear();
+    marker.addAll(list
+
+        // Marker(
+        //   markerId: MarkerId('Currentlocation'),
+        //   position: LatLng(position.latitude, position.longitude))
+        );
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,62 +150,6 @@ class _FindBinPageState extends State<FindBinPage> {
         onMapCreated: (GoogleMapController controller) {
           googlemapController = controller;
         },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          Position position = await _determinedPosition();
-          // BitmapDescriptor markerbitmap =
-          //     await BitmapDescriptor.fromAssetImage(
-          //   ImageConfiguration(),
-          //   "assets/images/person.png",
-          // );
-          print('latitude=====>${position.latitude}');
-          print('position=====>${position}');
-
-          List<Marker> list = await [
-            Marker(
-                draggable: true,
-                onDragEnd: (value) {},
-                markerId: MarkerId('1'),
-                position: LatLng(position.latitude, position.longitude),
-                infoWindow: InfoWindow(title: 'My Position'),
-                icon: customIcon!
-
-                // icon: BitmapDescriptor.fromBytes(Uint8List.view(
-                //     'assets/images/person.png'))
-                ),
-            Marker(
-                markerId: MarkerId('2'),
-                position: LatLng(37.42796133580614, -122.085749655962),
-                infoWindow: InfoWindow(title: 'Bin')),
-            Marker(
-                markerId: MarkerId('3'),
-                position: LatLng(37.4143, -122.0774),
-                infoWindow: InfoWindow(title: 'Bin')),
-            Marker(
-                markerId: MarkerId('4'),
-                position: LatLng(37.4268, -122.0807),
-                infoWindow: InfoWindow(title: 'Bin')),
-            Marker(
-                markerId: MarkerId('5'),
-                position: LatLng(37.4227, -122.0664),
-                infoWindow: InfoWindow(title: 'Bin'))
-          ];
-          googlemapController.animateCamera(CameraUpdate.newCameraPosition(
-              CameraPosition(
-                  target: LatLng(position.latitude, position.longitude),
-                  zoom: 14)));
-          // markers.clear();
-          marker.clear();
-          marker.addAll(list
-
-              // Marker(
-              //   markerId: MarkerId('Currentlocation'),
-              //   position: LatLng(position.latitude, position.longitude))
-              );
-          setState(() {});
-        },
-        label: Text('Find bin'),
       ),
     );
   }
