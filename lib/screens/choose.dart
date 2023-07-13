@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wasteaider/screens/admin/adminchoose.dart';
+import 'package:wasteaider/screens/owner/ownerLogIn.dart';
+import 'package:wasteaider/screens/user/login.dart';
+import 'package:wasteaider/screens/user/signup.dart';
 
 import 'package:wasteaider/screens/user/userChoose.dart';
 
@@ -23,7 +26,7 @@ class _ChooseUserAdminState extends State<ChooseUserAdmin> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UserChoose()),
+                    MaterialPageRoute(builder: (context) => UserSignup()),
                   );
                 },
                 child: Text(
@@ -41,7 +44,16 @@ class _ChooseUserAdminState extends State<ChooseUserAdmin> {
                       builder: (context) => ChooseDustbinWasteCollector()),
                 );
               },
-              child: Text('Admin', style: TextStyle(fontSize: 30)))
+              child: Text('Admin', style: TextStyle(fontSize: 30))),
+          Padding(padding: EdgeInsets.only(top: 20)),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OwnerLogin()),
+                );
+              },
+              child: Text('Owner', style: TextStyle(fontSize: 30)))
         ],
       ),
     );

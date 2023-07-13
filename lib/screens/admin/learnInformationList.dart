@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wasteaider/screens/admin/learnInformation.dart';
+import 'package:wasteaider/screens/user/learn.dart';
 
 class ListLearnInformation extends StatefulWidget {
   const ListLearnInformation({super.key});
@@ -73,45 +74,56 @@ class _ListLearnInformationState extends State<ListLearnInformation> {
                       // Customize the UI as per your requirement
                       return Container(
                           height: 90,
-                          child: ListTile(
-                            title: Text(
-                              document['title'].toString(),
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            contentPadding:
-                                EdgeInsets.only(top: 10, left: 20, right: 10),
-                            subtitle: Text(
-                              document['description'].toString(),
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w400),
-                            ),
-                            leading: Image.network('${document['image']}'),
-                            trailing: IconButton(
-                                onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: Text('Delete'),
-                                        content: Text(
-                                            'Are you sure you want to delete?'),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            child: Text('OK'),
-                                            onPressed: () {
-                                              deleteListItem(documentId);
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Learn(
+                                          document: document,
+                                        )),
+                              );
+                            },
+                            child: ListTile(
+                              title: Text(
+                                document['title'].toString(),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w500),
+                              ),
+                              contentPadding:
+                                  EdgeInsets.only(top: 10, left: 20, right: 10),
+                              subtitle: Text(
+                                document['description'].toString(),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w400),
+                              ),
+                              leading: Image.network('${document['image']}'),
+                              trailing: IconButton(
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text('Delete'),
+                                          content: Text(
+                                              'Are you sure you want to delete?'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              child: Text('OK'),
+                                              onPressed: () {
+                                                deleteListItem(documentId);
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
 
-                                  // deleteListItem(documentId);
-                                },
-                                icon: Icon(Icons.delete)),
+                                    // deleteListItem(documentId);
+                                  },
+                                  icon: Icon(Icons.delete)),
+                            ),
                           ));
                     },
                   );
